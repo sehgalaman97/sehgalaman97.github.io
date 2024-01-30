@@ -7,13 +7,10 @@
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-image: url('back.jpg'); /* Add your background image URL here */
+            background-image: url('back.jpg');
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
-            display: flex;
-            justify-content: center;
-            align-items: center;
             height: 100vh;
             margin: 0;
             padding: 0;
@@ -21,65 +18,65 @@
         }
         #content {
             display: flex;
+            flex-direction: column;
             align-items: center;
+            justify-content: center;
+            height: 100%;
         }
-        #gif {
-            float: left; /* Image floated to the left */
-            margin-right: 20px;
+        #gif img {
+            max-width: 100%;
+            height: auto;
         }
         #text {
             margin-bottom: 20px;
             font-size: 18px;
             font-weight: bold;
+            text-align: center;
         }
         #text div {
-            font-size: 35px;
+            font-size: 24px;
             font-weight: bold;
-            margin-bottom: 20px;
+            margin-bottom: 10px;
         }
         #buttons {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
             margin-top: 20px;
-        }
-        .button-container {
-            display: inline-block;
         }
         .button {
             padding: 10px 20px;
-            margin: 0 10px;
+            margin: 10px 0;
             cursor: pointer;
             border: none;
             border-radius: 5px;
             font-size: 16px;
-        }
-        .button:hover {
             background-color: #ddd;
+            width: 120px;
+            text-align: center;
         }
         #noButton {
-            position: absolute; /* Set button position to absolute */
+            width: auto;
         }
     </style>
 </head>
 <body>
     <div id="content">
         <div id="gif">
-            <img id="valentineImage" src="Topo.gif" alt="Your GIF" width="400" height="550"> <!-- Adjust width and height as needed -->
+            <img id="valentineImage" src="Topo.gif" alt="Your GIF">
         </div>
         <div id="text">
             <div id="firstText">Gappuuuu baby!!</div>
             <div id="secondText">Will you be my valentine?</div>
         </div>
-    </div>
-    <div id="buttons">
-        <div class="button-container">
+        <div id="buttons">
             <button class="button" id="yesButton">Yes</button>
-        </div>
-        <div class="button-container">
             <button class="button" id="noButton">No</button>
         </div>
     </div>
 
     <script>
-        // Get reference to the elements
         const valentineImage = document.getElementById('valentineImage');
         const yesButton = document.getElementById('yesButton');
         const noButton = document.getElementById('noButton');
@@ -87,39 +84,22 @@
         const secondText = document.getElementById('secondText');
         const buttonsContainer = document.getElementById('buttons');
 
-        // Function to change the image, text, and button position when clicking "Yes"
         function handleYesButtonClick() {
-            // Change the image source
-            valentineImage.src = 'maan.gif'; // Replace 'maan.gif' with your new image source
-
-            // Change the text
-            firstText.textContent = "Okayy"; // Change as needed
-            secondText.textContent = "Maan gya shiiiii"; // Change as needed
-
-            // Hide all buttons
+            valentineImage.src = 'maan.gif';
+            firstText.textContent = "Okayy";
+            secondText.textContent = "Maan gya shiiiii";
             buttonsContainer.style.display = 'none';
         }
 
-        // Function to change the image, text, and button position when clicking "No"
         function handleNoButtonClick() {
-            // Change the image source
-            valentineImage.src = 'gussa.png'; // Replace 'gussa.png' with your new image source
-
-            // Change the text
+            valentineImage.src = 'gussa.png';
             firstText.textContent = "Puch nai rha hu, bta rha hu";
-            secondText.textContent = "Will you be my valentine?"; // Change as needed
-
-            // Move the buttons to a different random location on the webpage
-            const randomX = Math.random() * (window.innerWidth - noButton.offsetWidth);
-            const randomY = Math.random() * (window.innerHeight - noButton.offsetHeight);
-            noButton.style.left = randomX + 'px';
-            noButton.style.top = randomY + 'px';
+            secondText.textContent = "Will you be my valentine?";
+            noButton.style.marginTop = Math.random() * 100 + 'px'; // Randomize margin-top
+            noButton.style.marginBottom = Math.random() * 100 + 'px'; // Randomize margin-bottom
         }
 
-        // Attach event listener to the Yes button
         yesButton.addEventListener('click', handleYesButtonClick);
-
-        // Attach event listener to the No button
         noButton.addEventListener('click', handleNoButtonClick);
     </script>
 </body>
